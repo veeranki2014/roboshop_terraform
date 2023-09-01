@@ -5,9 +5,11 @@ components = {
   frontend        = {
     tags = { Monitor = "yes" , env = "dev"}
   }
-  mongodb         = {}
-  catalogue       = {
+  mongodb         = {
     tags = { env = "dev"}
+  }
+  catalogue       = {
+    tags = { Monitor = "yes", env = "dev"}
   }
   redis           = {
     tags = { env = "dev"}
