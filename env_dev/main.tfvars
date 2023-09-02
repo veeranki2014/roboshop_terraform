@@ -33,4 +33,12 @@ components = {
     tags = { Monitor = "yes" , env = "dev"}
   }
 
+  tags = {
+    company_name = "veerankitek.com"
+    business     = "Ecommerce"
+    business_unit= "Retail"
+    cost_center  = "322"
+    project_name = "Roboshop"
+  }
+
 }
