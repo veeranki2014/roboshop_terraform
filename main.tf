@@ -16,6 +16,9 @@ module "vpc"{
   tags              = var.tags
 
 }
+output "test2"{
+  default = "2"
+}
 
 
 
