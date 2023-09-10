@@ -15,10 +15,17 @@ module "vpc"{
   env               = var.env
   tags              = var.tags
 
+
 }
-output "test2"{
-  default = "2"
+
+output "foreach" {
+  value = var.vpc
 }
+
+output "cidr" {
+  value =
+}
+
 
 
 

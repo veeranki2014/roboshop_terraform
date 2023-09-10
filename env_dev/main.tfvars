@@ -64,6 +64,4 @@ vpc = {
   }
 }
 
-output "test1"{
-  default = "1"
-}
+
