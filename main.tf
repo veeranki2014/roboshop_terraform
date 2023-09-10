@@ -18,13 +18,7 @@ module "vpc"{
 
 }
 
-output "foreach" {
-  value = var.vpc
-}
 
-output "cidr" {
-  value =
-}
 
 
 
