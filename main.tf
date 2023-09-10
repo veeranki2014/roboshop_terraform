@@ -15,3 +15,4 @@ module "vpc"{
 output "foreach" {
   value = var.vpc
 }
+
