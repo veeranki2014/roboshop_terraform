@@ -7,7 +7,7 @@
 #}
 
 module "vpc"{
-  source            = "git::https://github.com/veeranki2014/tf_module_vpc.git"
+  source            = "git::https://github.com/veeranki2014/tf-module-vpc.git"
   for_each          = var.vpc
   cidr_block        = each.value["cidr_block"]
 }
