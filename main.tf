@@ -30,6 +30,10 @@ module "app_server" {
 #  value = module.vpc
 #}
 
+output "vpc_id" {
+  value = module.vpc
+}
+
 
 
 
