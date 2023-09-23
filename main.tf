@@ -18,7 +18,7 @@ module "vpc"{
 }
 
 module "app_server" {
-  source                      = "git::https://github.com/veeranki2014/tf-module-vpc.git"
+  source                      = "git::https://github.com/veeranki2014/tf_module_app.git"
   tags                        = var.tags
   env                         = var.env
   component                   = "test"
