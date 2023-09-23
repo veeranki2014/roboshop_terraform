@@ -17,14 +17,14 @@ module "vpc"{
   default_vpc_id              = var.default_vpc_id
 }
 
-module "app_server" {
-  source                      = "git::https://github.com/veeranki2014/tf_module_app.git"
-  tags                        = var.tags
-  env                         = var.env
-  component                   = "test"
-  //subnet_id                   = module.vpc["subnet_ids"]["app"]["subnet_ids"][0]
-  subnet_id                   = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), "app", null), "subnet_ids", null)[0]
-}
+#module "app_server" {
+#  source                      = "git::https://github.com/veeranki2014/tf_module_app.git"
+#  tags                        = var.tags
+#  env                         = var.env
+#  component                   = "test"
+#  //subnet_id                   = module.vpc["subnet_ids"]["app"]["subnet_ids"][0]
+#  subnet_id                   = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), "app", null), "subnet_ids", null)[0]
+#}
 
 #output "subnet_ids" {
 #  value = module.vpc
