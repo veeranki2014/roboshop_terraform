@@ -59,6 +59,7 @@ vpc = {
 
 default_vpc_id    = "vpc-0df387ce1014bca10"
 default_vpc_rt    = "rtb-059f39167b3ee0f0a"
+allow_ssh_cidr    = [ "172.31.4.252/32" ]
 
 ##we can't define resource blocks in .tfvars
 rabbitmq = {
