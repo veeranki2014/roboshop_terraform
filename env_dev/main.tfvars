@@ -60,11 +60,11 @@ vpc = {
 default_vpc_id    = "vpc-0df387ce1014bca10"
 default_vpc_rt    = "rtb-059f39167b3ee0f0a"
 
-rabbitmq{
-  main {
+##we can't define resource blocks in .tfvars
+rabbitmq = {
+  main = {
     instance_type = "t3.small"
     component     = "rabbitmq"
-
   }
 }
 
