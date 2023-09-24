@@ -36,7 +36,7 @@ module "rabbitmq"{
   env           = var.env
   tags          = var.tags
   vpc_id        = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
-  sg_subnet_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets_ids", null), "app", null),"cidr_block",null)
+  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null),"cidr_block",null)
   subnet_id    = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), "db", null), "subnet_ids", null)[0]
 }
 
