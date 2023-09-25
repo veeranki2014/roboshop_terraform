@@ -76,7 +76,7 @@ rds = {
     component               = "mysql"
     engine                  = "aurora-mysql"
     engine_version          = "5.7.mysql_aurora.2.11.3"
-    #db_name                 = "yummy"
+    db_name                 = "yummy"
 
   }
 }
