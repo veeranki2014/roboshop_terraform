@@ -84,6 +84,7 @@ module "elasticache" {
   source    = "git::https://github.com/veeranki2014/tf-module-elasticache.git"
 
   for_each            = var.elasticache
+  component           = each.value["component"]
   subnet_ids          = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), "db", null), "subnet_ids", null)
   vpc_id        = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
   sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null),"cidr_block",null)
