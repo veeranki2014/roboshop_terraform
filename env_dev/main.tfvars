@@ -76,12 +76,20 @@ rabbitmq = {
 ##RDS mysql for shipping module
 rds = {
   main = {
-    component               = "mysql"
+    component               = "rds"
     engine                  = "aurora-mysql"
     engine_version          = "5.7.mysql_aurora.2.11.3"
     db_name                 = "yummy"
     instance_count          = 1
     instance_class          = "db.t3.small"
+  }
+}
+
+##DocumentDb
+documentdb = {
+  main = {
+    component               = "docdb"
+
   }
 }
 
