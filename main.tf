@@ -18,15 +18,15 @@ module "vpc"{
   default_vpc_rt              = var.default_vpc_rt
 }
 
-module "app_server" {
-  source                      = "git::https://github.com/veeranki2014/tf_module_app.git"
-  tags                        = var.tags
-  env                         = var.env
-  component                   = "test"
-  //subnet_id                   = module.vpc["subnet_ids"]["app"]["subnet_ids"][0]
-  vpc_id                      = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
-  subnet_id                   = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), "app", null), "subnet_ids", null)[0]
-}
+#module "app_server" {
+#  source                      = "git::https://github.com/veeranki2014/tf_module_app.git"
+#  tags                        = var.tags
+#  env                         = var.env
+#  component                   = "test"
+#  //subnet_id                   = module.vpc["subnet_ids"]["app"]["subnet_ids"][0]
+#  vpc_id                      = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
+#  subnet_id                   = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), "app", null), "subnet_ids", null)[0]
+#}
 
 #module "rabbitmq"{
 #  source        = "git::https://github.com/veeranki2014/tf-module-rabbitmq.git"
