@@ -93,6 +93,12 @@ documentdb = {
   }
 }
 
+##Elasticache
+elasticache = {
+  main = {
+    component               = "elasticache"
+  }
+}
 
 
 
