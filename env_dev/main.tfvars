@@ -62,6 +62,7 @@ default_vpc_rt    = "rtb-059f39167b3ee0f0a"
 allow_ssh_cidr    = [ "172.31.4.252/32" ]
 zone_id           = "Z05332201VBHF9VM3Q9N5"
 kms_key_id        = "99a36c85-491f-4308-9f5a-a20587017b99"
+kms_key_arn       = "arn:aws:kms:us-east-1:155405255921:key/99a36c85-491f-4308-9f5a-a20587017b99"
 
 
 ##we can't define resource blocks in .tfvars
