@@ -99,7 +99,7 @@ module "documentdb" {
 #  kms_key_arn          = var.kms_key_arn
 
 
-}
+#}
 #output "subnet_ids" {
 #  value = module.vpc
 #}
