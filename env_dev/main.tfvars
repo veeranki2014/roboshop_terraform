@@ -89,16 +89,56 @@ rds = {
 documentdb = {
   main = {
     component               = "docdb"
+    engine                  = "docdb"
+    engine_version          = "4.0.0"
+    instance_class          = "db.t3.medium"
+    db_instance_count       = 1
 
   }
 }
+
+#variable "vpc_id" {}
+#variable "engine" {}
+#variable "master_username" {}
+#variable "master_password" {}
+#variable "port" {
+#  default = "27017"
+#}
+#variable "engine_version" {}
+#variable "db_instance_count" {}
+#variable "instance_class" {}
 
 ##Elasticache
 elasticache = {
   main = {
     component               = "elasticache"
+    engine                  = "redis"
+    engine_version          = "6.x"
+    replicas_per_node_group = 1
+    num_node_groups         = 1
+    node_type               = "cache.t3.micro"
+
+
+
   }
 }
 
+#variable "component" {}
+#variable "env" {}
+#variable "subnet_ids" {}
+#variable "tags" {}
+#variable "sg_subnet_cidr" {}
+#variable "kms_key_arn" {}
+#variable "vpc_id" {}
+#variable "engine" {}
+#variable "node_type" {}
+#variable "num_cache_nodes" {}
+#variable "parameter_group_name" {}
+#variable "engine_version" {}
+#variable "port" {
+#  default = 6379
+#}
+#variable "replicas_per_node_group" {}
+#variable "num_node_groups" {}
 
 
