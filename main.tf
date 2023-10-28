@@ -66,47 +66,47 @@ module "vpc"{
 #
 #}
 
-module "documentdb" {
-  source    = "git::https://github.com/veeranki2014/tf-module-documentdb.git"
+#module "documentdb" {
+#  source    = "git::https://github.com/veeranki2014/tf-module-documentdb.git"
+#
+#  for_each            = var.documentdb
+#  component           = each.value["component"]
+#  engine              = each.value["engine"]
+#  engine_version      = each.value["engine_version"]
+#  instance_class      = each.value["instance_class"]
+#  db_instance_count   = each.value["db_instance_count"]
+#
+#
+#  subnet_ids          = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), "db", null), "subnet_ids", null)
+#  vpc_id        = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
+#  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null),"cidr_block",null)
+#
+#  env                 = var.env
+#  tags                = var.tags
+#  #kms_key_id          = var.kms_key_id
+#  kms_key_arn          = var.kms_key_arn
+#
+#}
 
-  for_each            = var.documentdb
-  component           = each.value["component"]
-  engine              = each.value["engine"]
-  engine_version      = each.value["engine_version"]
-  instance_class      = each.value["instance_class"]
-  db_instance_count   = each.value["db_instance_count"]
-
-
-  subnet_ids          = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), "db", null), "subnet_ids", null)
-  vpc_id        = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
-  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null),"cidr_block",null)
-
-  env                 = var.env
-  tags                = var.tags
-  #kms_key_id          = var.kms_key_id
-  kms_key_arn          = var.kms_key_arn
-
-}
-
-module "elasticache" {
-  source    = "git::https://github.com/veeranki2014/tf-module-elasticache.git"
-
-  for_each            = var.elasticache
-  component           = each.value["component"]
-  engine              = each.value["engine"]
-  engine_version      = each.value["engine_version"]
-  replicas_per_node_group = each.value["replicas_per_node_group"]
-  num_node_groups     = each.value["num_node_groups"]
-  node_type           = each.value["node_type"]
-  subnet_ids          = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), "db", null), "subnet_ids", null)
-  vpc_id              = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
-  sg_subnet_cidr      = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null),"cidr_block",null)
-  env                 = var.env
-  tags                = var.tags
-  #kms_key_id          = var.kms_key_id
-  kms_key_arn          = var.kms_key_arn
-
-}
+#module "elasticache" {
+#  source    = "git::https://github.com/veeranki2014/tf-module-elasticache.git"
+#
+#  for_each            = var.elasticache
+#  component           = each.value["component"]
+#  engine              = each.value["engine"]
+#  engine_version      = each.value["engine_version"]
+#  replicas_per_node_group = each.value["replicas_per_node_group"]
+#  num_node_groups     = each.value["num_node_groups"]
+#  node_type           = each.value["node_type"]
+#  subnet_ids          = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), "db", null), "subnet_ids", null)
+#  vpc_id              = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
+#  sg_subnet_cidr      = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null),"cidr_block",null)
+#  env                 = var.env
+#  tags                = var.tags
+#  #kms_key_id          = var.kms_key_id
+#  kms_key_arn          = var.kms_key_arn
+#
+#}
 
 
 
