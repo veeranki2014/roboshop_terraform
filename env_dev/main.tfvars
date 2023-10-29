@@ -154,6 +154,7 @@ apps = {
       max_size            = 1
       min_size            = 1
       subnets_ref         = "app"
+
   }
 
 
