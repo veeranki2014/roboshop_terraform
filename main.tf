@@ -111,6 +111,7 @@ module "vpc"{
 module "alb" {
   source                = "git::https://github.com/veeranki2014/tf-module-alb.git"
   for_each              = var.alb
+  for_each              = each.value["component"]
   name                  = each.value["name"]
   internal              = each.value["internal"]
   load_balancer_type    = each.value["load_balancer_type"]
