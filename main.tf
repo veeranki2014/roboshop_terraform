@@ -117,15 +117,51 @@ module "alb" {
   load_balancer_type    = each.value["load_balancer_type"]
 
   vpc_id                = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
+  sg_subnet_cidr        = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), each.value["subnets_ref"], null),"cidr_block",null)
+  subnets_ids           = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), each.value["subnets_ref"], null), "subnet_ids", null)
+
+  tags                  = var.tags
+  env                   = var.env
+}
+
+module "apps" {
+  source                = "git::https://github.com/veeranki2014/tf_module_app.git"
+  for_each              = var.apps
+  component             = each.value["component"]
+  app_port              = each.value["app_port"]
+  desired_capacity      = each.value["desired_capacity"]
+  max_size              = each.value["max_size"]
+  min_size              = each.value["min_size"]
+
+  vpc_id                = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
   sg_subnet_cidr        = each.value["name"] == "public" ? ["0.0.0.0/0"] : local.app_web_subnet_cidr
   subnets_ids           = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), each.value["subnets_ref"], null), "subnet_ids", null)
 
   tags                  = var.tags
   env                   = var.env
-
-
-
+  kms_key_id            = var.kms_key_id
 }
+
+#variable "env" {}
+#variable "component" {}
+#variable "tags" {
+#  default = {}
+#}
+#variable "subnet_id" {}
+#variable "vpc_id" {}
+#variable "app_port" {}
+#variable "sg_subnets_cidr" {}
+#variable "kms_key_id" {}
+#variable "instance_type" {}
+#variable "desired_capacity" {}
+#variable "max_size" {}
+#variable "min_size" {}
+
+
+
+
+
+
 #variable "env" {}
 #variable "component" {}
 #variable "vpc_id" {}

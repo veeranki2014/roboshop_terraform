@@ -144,22 +144,22 @@ alb = {
 
 }
 
-#variable "component" {}
-#variable "env" {}
-#variable "subnet_ids" {}
-#variable "tags" {}
-#variable "sg_subnet_cidr" {}
-#variable "kms_key_arn" {}
-#variable "vpc_id" {}
-#variable "engine" {}
-#variable "node_type" {}
-#variable "num_cache_nodes" {}
-#variable "parameter_group_name" {}
-#variable "engine_version" {}
-#variable "port" {
-#  default = 6379
-#}
-#variable "replicas_per_node_group" {}
-#variable "num_node_groups" {}
+apps = {
+  cart = {
+
+      component           = "cart"
+      app_port            = 8080
+      instance_type       = "t3.micro"
+      desired_capacity    = 1
+      max_size            = 1
+      min_size            = 1
+  }
+
+
+}
+
+
+
+
 
 
