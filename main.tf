@@ -117,7 +117,7 @@ module "alb" {
   load_balancer_type    = each.value["load_balancer_type"]
 
   vpc_id                = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
-  sg_subnet_cidr        = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), each.value["subnets_ref"], null),"cidr_block",null)
+  sg_subnet_cidr        = each.value["name"] == "public" ? ["0.0.0.0/0"] : local.app_web_subnet_cidr
   subnets_ids           = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), each.value["subnets_ref"], null), "subnet_ids", null)
 
   tags                  = var.tags
@@ -134,7 +134,7 @@ module "apps" {
   min_size              = each.value["min_size"]
 
   vpc_id                = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
-  sg_subnet_cidr        = each.value["name"] == "public" ? ["0.0.0.0/0"] : local.app_web_subnet_cidr
+  sg_subnet_cidr        = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), each.value["subnets_ref"], null),"cidr_block",null)
   subnets_ids           = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), each.value["subnets_ref"], null), "subnet_ids", null)
 
   tags                  = var.tags
