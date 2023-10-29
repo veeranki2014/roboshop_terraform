@@ -108,21 +108,21 @@ module "vpc"{
 #
 #}
 
-#module "alb" {
-#  source                = "git::https://github.com/veeranki2014/tf-module-alb.git"
-#  for_each              = var.alb
-#  //component             = each.value["component"]
-#  name                  = each.value["name"]
-#  internal              = each.value["internal"]
-#  load_balancer_type    = each.value["load_balancer_type"]
-#
-#  vpc_id                = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
-#  sg_subnet_cidr        = each.value["name"] == "public" ? ["0.0.0.0/0"] : local.app_web_subnet_cidr
-#  subnets_ids           = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), each.value["subnets_ref"], null), "subnet_ids", null)
-#
-#  tags                  = var.tags
-#  env                   = var.env
-#}
+module "alb" {
+  source                = "git::https://github.com/veeranki2014/tf-module-alb.git"
+  for_each              = var.alb
+  //component             = each.value["component"]
+  name                  = each.value["name"]
+  internal              = each.value["internal"]
+  load_balancer_type    = each.value["load_balancer_type"]
+
+  vpc_id                = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
+  sg_subnet_cidr        = each.value["name"] == "public" ? ["0.0.0.0/0"] : local.app_web_subnet_cidr
+  subnets_ids           = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), each.value["subnets_ref"], null), "subnet_ids", null)
+
+  tags                  = var.tags
+  env                   = var.env
+}
 
 module "apps" {
   source                = "git::https://github.com/veeranki2014/tf_module_app.git"
@@ -142,6 +142,7 @@ module "apps" {
   env                   = var.env
   kms_key_id            = var.kms_key_arn
   allow_ssh_cidr        = var.allow_ssh_cidr
+  lb_dns_name           = lookup(lookup( module.alb, each.value["lb_ref"], null ), "dns_name", null)
 }
 
 #variable "env" {}
