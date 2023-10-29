@@ -132,6 +132,7 @@ module "apps" {
   desired_capacity      = each.value["desired_capacity"]
   max_size              = each.value["max_size"]
   min_size              = each.value["min_size"]
+  instance_type         = each.value["instance_type"]
 
   vpc_id                = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
   sg_subnets_cidr        = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), each.value["subnets_ref"], null),"cidr_block",null)
