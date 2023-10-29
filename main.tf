@@ -108,6 +108,36 @@ module "vpc"{
 #
 #}
 
+module "alb" {
+  source                = "git::https://github.com/veeranki2014/tf-module-alb.git"
+  for_each              = var.alb
+  name                  = each.value["name"]
+  internal              = each.value["internal"]
+  load_balancer_type    = each.value["load_balancer_type"]
+
+  vpc_id                = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
+  sg_subnet_cidr        = each.value["name"] == "public" ? ["0.0.0.0/0"] : local.app_web_subnet_cidr
+  subnets_ids           = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), each.value["subnets_ref"], null), "subnet_ids", null)
+
+  tags                  = var.tags
+  env                   = each.value["env"]
+
+
+
+}
+#variable "env" {}
+#variable "component" {}
+#variable "vpc_id" {}
+#variable "port" {
+#  default = 80
+#}
+#variable "sg_subnet_cidr" {}
+#variable "name" {}
+#variable "internal" {}
+#variable "load_balancer_type" {}
+#variable "subnets" {}
+#variable "tags" {}
+
 
 
 #output "subnet_ids" {

@@ -123,6 +123,27 @@ elasticache = {
   }
 }
 
+####Application LoadBalancer
+alb = {
+
+  public = {
+    name                  = "public"
+    internal              = false
+    load_balancer_type    = "application"
+    subnets_ref           = "public"
+
+  }
+
+  private = {
+    name                  = "private"
+    internal              = true
+    load_balancer_type    = "application"
+    subnets_ref           = "app"
+
+  }
+
+}
+
 #variable "component" {}
 #variable "env" {}
 #variable "subnet_ids" {}
