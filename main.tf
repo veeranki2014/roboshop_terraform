@@ -133,6 +133,7 @@ module "apps" {
   max_size              = each.value["max_size"]
   min_size              = each.value["min_size"]
   instance_type         = each.value["instance_type"]
+  lb_rule_priority      = each.value["lb_rule_priority"]
 
   vpc_id                = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
   sg_subnets_cidr        = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), each.value["subnets_ref"], null),"cidr_block",null)
@@ -143,6 +144,8 @@ module "apps" {
   kms_key_id            = var.kms_key_arn
   allow_ssh_cidr        = var.allow_ssh_cidr
   lb_dns_name           = lookup(lookup( module.alb, each.value["lb_ref"], null ), "dns_name", null)
+  listener_arn          = lookup(lookup( module.alb, each.value["lb_ref"], null ), "listener_arn", null)
+
 }
 
 #variable "env" {}
