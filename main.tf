@@ -40,7 +40,7 @@ module "rabbitmq"{
   subnet_id    = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), "db", null), "subnet_ids", null)[0]
   allow_ssh_cidr = var.allow_ssh_cidr
   zone_id         = var.zone_id
-  kms_key_id      = var.kms_key_id
+  kms_key_arn      = var.kms_key_arn
 }
 
 module "rds" {
