@@ -136,7 +136,7 @@ module "apps" {
 
 
   vpc_id                = lookup(lookup(module.vpc, "main", null ), "vpc_id", null)
-  sg_subnets_cidr        = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), each.value["subnets_ref"], null),"cidr_block",null)
+  sg_subnets_cidr       = each.value["component"] == "frontend" ? local.public_web_subnet_cidr : lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), each.value["subnets_ref"], null),"cidr_block",null)
   subnets_ids           = lookup(lookup(lookup(lookup( module.vpc, "main", null ), "subnet_ids" , null), each.value["subnets_ref"], null), "subnet_ids", null)
 
   tags                  = var.tags
