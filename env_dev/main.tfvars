@@ -155,6 +155,7 @@ apps = {
       subnets_ref         = "app"
       lb_ref              = "private"
       lb_rule_priority    = 100
+      extra_param_access  = []
   }
 
   catalogue = {
@@ -167,6 +168,7 @@ apps = {
     subnets_ref         = "app"
     lb_ref              = "private"
     lb_rule_priority    = 102
+    extra_param_access  = [ "arn:aws:ssm:us-east-1:155405255921:parameter/roboshop.${var.env}.docdb.*" ]
   }
   user = {
     component           = "user"
@@ -178,6 +180,7 @@ apps = {
     subnets_ref         = "app"
     lb_ref              = "private"
     lb_rule_priority    = 103
+    extra_param_access  = [ "arn:aws:ssm:us-east-1:155405255921:parameter/roboshop.${var.env}.docdb.*" ]
   }
   shipping = {
     component           = "shipping"
@@ -189,6 +192,7 @@ apps = {
     subnets_ref         = "app"
     lb_ref              = "private"
     lb_rule_priority    = 104
+    extra_param_access  = []
   }
   payment = {
     component           = "payment"
@@ -200,6 +204,7 @@ apps = {
     subnets_ref         = "app"
     lb_ref              = "private"
     lb_rule_priority    = 105
+    extra_param_access  = []
   }
 
   frontend = {
@@ -212,6 +217,7 @@ apps = {
     subnets_ref         = "web"
     lb_ref              = "public"
     lb_rule_priority    = 100
+    extra_param_access  = []
   }
 
 
