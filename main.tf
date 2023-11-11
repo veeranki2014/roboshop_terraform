@@ -150,6 +150,7 @@ module "apps" {
   listener_arn          = lookup(lookup( module.alb, each.value["lb_ref"], null ), "listener_arn", null)
   lb_rule_priority      = each.value["lb_rule_priority"]
   extra_param_access    = try(each.value["extra_param_access"], [])
+  allow_prometheus_cidr = var.allow_prometheus_cidr
 
 }
 
