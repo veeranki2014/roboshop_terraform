@@ -8,7 +8,7 @@ resource "aws_instance" "load-runner" {
   ami = data.aws_ami.main.id
   instance_type = "t3.medium"
   vpc_security_group_ids = ["sg-00cd0cb49be555ef2"]
-  tags {
+  tags = {
     Name = "load-runner"
   }
 
