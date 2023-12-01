@@ -154,38 +154,7 @@ module "apps" {
 
 }
 
-#variable "env" {}
-#variable "component" {}
-#variable "tags" {
-#  default = {}
-#}
-#variable "subnet_id" {}
-#variable "vpc_id" {}
-#variable "app_port" {}
-#variable "sg_subnets_cidr" {}
-#variable "kms_key_id" {}
-#variable "instance_type" {}
-#variable "desired_capacity" {}
-#variable "max_size" {}
-#variable "min_size" {}
 
-
-
-
-
-
-#variable "env" {}
-#variable "component" {}
-#variable "vpc_id" {}
-#variable "port" {
-#  default = 80
-#}
-#variable "sg_subnet_cidr" {}
-#variable "name" {}
-#variable "internal" {}
-#variable "load_balancer_type" {}
-#variable "subnets" {}
-#variable "tags" {}
 
 
 
