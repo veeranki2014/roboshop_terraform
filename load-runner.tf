@@ -12,7 +12,7 @@ resource "aws_instance" "load-runner" {
     Name = "load-runner"
   }
 
-  provisioner "remote-exec" {
+  /*provisioner "remote-exec" {
     connection {
       user = "root"
       password = "DevOps321"
@@ -25,6 +25,6 @@ resource "aws_instance" "load-runner" {
       "docker pull robotshop/rs-load:latest"
 ]
 
-  }
+  }*/
 }
 
